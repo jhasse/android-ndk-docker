@@ -1,15 +1,17 @@
 FROM fedora:28
 
-RUN dnf install -y unzip ncurses-compat-libs java-devel && dnf clean all
+RUN dnf install -y unzip ncurses-compat-libs java-devel file git make gradle && \
+    dnf clean all
 
 WORKDIR /opt
 
 RUN curl --silent -O https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && \
     unzip *.zip && rm *.zip && mkdir sdk && mv tools/ sdk/
 ENV ANDROID_HOME /opt/sdk
-RUN $ANDROID_HOME/tools/bin/sdkmanager "build-tools;27.0.3" "platforms;android-25"
-RUN yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+RUN yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;26.0.2" "platform-tools" \
+                                             "cmake;3.6.4111459" "platforms;android-28" "ndk-bundle"
 
-RUN curl --silent -O https://dl.google.com/android/repository/android-ndk-r17b-linux-x86_64.zip && \
-    unzip *.zip && rm *.zip
-ENV ANDROID_NDK_HOME /opt/android-ndk-r17b
+RUN curl -O -L https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz && \
+    tar -xf *.tar.gz boost_1_*_0/boost && \
+    mv boost_1_*_0/boost/ $ANDROID_HOME/ndk-bundle/sysroot/usr/include/ && rm *.tar.gz && \
+    rm -r boost*/
