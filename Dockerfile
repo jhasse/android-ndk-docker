@@ -1,5 +1,6 @@
 FROM fedora:28
 
+ENV LANG en_US.UTF-8
 RUN dnf install -y unzip ncurses-compat-libs java-devel file git make bzip2 patch gcc && \
     dnf clean all
 
