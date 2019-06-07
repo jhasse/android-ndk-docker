@@ -11,7 +11,7 @@ RUN curl --silent -O https://dl.google.com/android/repository/sdk-tools-linux-43
 ENV ANDROID_HOME /opt/sdk
 ENV JAVA_HOME /usr
 RUN yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;28.0.3" "platform-tools" \
-                                             "cmake;3.10.2.4988404" "platforms;android-28" \
+                                             "cmake;3.10.2.4988404" "platforms;android-29" \
                                              "ndk-bundle"
 
 RUN curl --silent -O -L https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.bz2 && \
