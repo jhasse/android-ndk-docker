@@ -1,8 +1,8 @@
-FROM fedora:30
+FROM registry.fedoraproject.org/fedora-minimal:30
 
 ENV LANG en_US.UTF-8
-RUN dnf install -y unzip ncurses-compat-libs java-devel file git make bzip2 patch gcc && \
-    dnf clean all
+RUN microdnf install unzip ncurses-compat-libs java-devel file git make bzip2 patch gcc tar && \
+    microdnf clean all
 
 WORKDIR /opt
 
