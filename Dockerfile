@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:30
+FROM registry.fedoraproject.org/fedora-minimal:31
 
 ENV LANG en_US.UTF-8
 RUN microdnf install unzip ncurses-compat-libs java-devel file git make bzip2 patch gcc tar && \
