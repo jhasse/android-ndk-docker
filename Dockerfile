@@ -14,7 +14,7 @@ RUN yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;28.0.3" "platform-tool
                                              "cmake;3.10.2.4988404" "platforms;android-29" \
                                              "ndk;21.0.6113669"
 
-RUN curl --silent -O -L https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.bz2 && \
+RUN curl --silent -O -L https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.bz2 && \
     tar -xf *.tar.bz2 'boost_1_*_0/boost' && \
-    mv boost_1_*_0/boost/ $ANDROID_HOME/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/ && \
+    mv boost_1_*_0/boost/ sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/ && \
     rm *.tar.bz2 && rm -r boost*/
