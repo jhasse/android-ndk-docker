@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:31 AS build
+FROM registry.fedoraproject.org/fedora-minimal:32 AS build
 
 RUN microdnf install unzip ncurses-compat-libs java-devel file git bzip2 patch gcc tar
 
@@ -14,7 +14,7 @@ RUN curl --silent -O -L https://dl.bintray.com/boostorg/release/1.72.0/source/bo
     tar -xf *.tar.bz2 'boost_1_*_0/boost' && \
     mv boost_1_*_0/boost/ sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/
 
-FROM registry.fedoraproject.org/fedora-minimal:31
+FROM registry.fedoraproject.org/fedora-minimal:32
 COPY --from=build /opt/sdk /opt/sdk
 RUN microdnf install java-devel make git cmake ninja-build && microdnf clean all
 ENV LANG en_US.UTF-8
