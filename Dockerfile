@@ -8,12 +8,12 @@ RUN curl --silent -O https://dl.google.com/android/repository/sdk-tools-linux-43
     unzip *.zip && mkdir sdk && mv tools/ sdk/
 ENV JAVA_HOME /usr
 RUN yes | sdk/tools/bin/sdkmanager "build-tools;28.0.3" "platform-tools" "platforms;android-29" \
-                                   "ndk;21.0.6113669"
+                                   "ndk;21.0.6352462"
 
 FROM registry.fedoraproject.org/fedora-minimal:32
 COPY --from=build /opt/sdk /opt/sdk
 RUN microdnf install java-devel make git cmake ninja-build boost-devel tar bzip2 patch && microdnf clean all
-RUN ln -s /usr/include/boost /opt/sdk/ndk/21.0.6113669/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/boost
+RUN ln -s /usr/include/boost /opt/sdk/ndk/21.0.6352462/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/boost
 ENV LANG en_US.UTF-8
 ENV ANDROID_HOME /opt/sdk
 ENV JAVA_HOME /usr
