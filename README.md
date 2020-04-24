@@ -1,1 +1,1 @@
-Includes Git, Make, Gradle and header-only Boost. `ANDROID_HOME` points to the SDK.
+Includes JDK, Git, CMake, Ninja, and Make. `ANDROID_HOME` points to the SDK.
