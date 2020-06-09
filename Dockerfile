@@ -14,5 +14,5 @@ FROM registry.fedoraproject.org/fedora-minimal:32
 COPY --from=build /opt/sdk /opt/sdk
 RUN microdnf install java-devel make git cmake ninja-build tar bzip2 patch && microdnf clean all
 ENV LANG en_US.UTF-8
-ENV ANDROID_HOME /opt/sdk
+ENV ANDROID_SDK_ROOT /opt/sdk
 ENV JAVA_HOME /usr
