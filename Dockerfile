@@ -8,7 +8,7 @@ RUN curl --silent -O https://dl.google.com/android/repository/commandlinetools-l
 RUN unzip *.zip && mkdir -p sdk/cmdline-tools && mv tools/ sdk/cmdline-tools/
 ENV JAVA_HOME /usr
 RUN yes | sdk/cmdline-tools/tools/bin/sdkmanager "build-tools;29.0.2" "platform-tools" \
-                                                 "platforms;android-28" "ndk;21.2.6472646"
+                                                 "platforms;android-29" "ndk;21.2.6472646"
 
 FROM registry.fedoraproject.org/fedora-minimal:32
 COPY --from=build /opt/sdk /opt/sdk
