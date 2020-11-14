@@ -4,11 +4,11 @@ RUN microdnf install unzip ncurses-compat-libs java-devel file git bzip2 patch g
 
 WORKDIR /opt
 
-RUN curl --silent -O https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip
-RUN unzip *.zip && mkdir -p sdk/cmdline-tools && mv tools/ sdk/cmdline-tools/
+RUN curl --silent -O https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
+RUN unzip *.zip && mkdir -p sdk/cmdline-tools/ && mv cmdline-tools/ sdk/cmdline-tools/latest
 ENV JAVA_HOME /usr
-RUN yes | sdk/cmdline-tools/tools/bin/sdkmanager "build-tools;29.0.2" "platform-tools" \
-                                                 "platforms;android-29" "ndk;21.3.6528147"
+RUN yes | sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;29.0.2" "platforms;android-29" \
+                                                  "ndk;21.3.6528147"
 
 FROM registry.fedoraproject.org/fedora-minimal:32
 COPY --from=build /opt/sdk /opt/sdk
