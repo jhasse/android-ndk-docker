@@ -4,7 +4,7 @@ RUN microdnf install unzip ncurses-compat-libs java-devel file git bzip2 patch g
 
 WORKDIR /opt
 
-RUN curl --silent -O https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
+RUN curl --silent -O https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip
 RUN unzip *.zip && mkdir -p sdk/cmdline-tools/ && mv cmdline-tools/ sdk/cmdline-tools/latest
 ENV JAVA_HOME /usr
 RUN yes | sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;30.0.2" "platforms;android-30" \
