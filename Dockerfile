@@ -1,6 +1,6 @@
-FROM registry.fedoraproject.org/fedora-minimal:32 AS build
+FROM registry.fedoraproject.org/fedora-minimal:35 AS build
 
-RUN microdnf install unzip ncurses-compat-libs java-devel file git bzip2 patch gcc tar
+RUN microdnf install -y unzip ncurses-compat-libs java-11-openjdk-devel file git bzip2 patch gcc tar
 
 WORKDIR /opt
 
@@ -10,9 +10,9 @@ ENV JAVA_HOME /usr
 RUN yes | sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;30.0.2" "platforms;android-30" \
                                                   "ndk;22.1.7171670"
 
-FROM registry.fedoraproject.org/fedora-minimal:32
+FROM registry.fedoraproject.org/fedora-minimal:35
 COPY --from=build /opt/sdk /opt/sdk
-RUN microdnf install java-devel make git cmake ninja-build tar bzip2 patch gcc-c++ unzip && microdnf clean all
+RUN microdnf install -y java-11-openjdk-devel make git cmake ninja-build tar bzip2 patch gcc-c++ unzip && microdnf clean all
 ENV ANDROID_SDK_ROOT /opt/sdk
 ENV LANG C.utf8
 ENV JAVA_HOME /usr
