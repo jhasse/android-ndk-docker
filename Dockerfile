@@ -7,7 +7,7 @@ WORKDIR /opt
 RUN curl --silent -O https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip
 RUN unzip *.zip && mkdir -p sdk/cmdline-tools/ && mv cmdline-tools/ sdk/cmdline-tools/latest
 ENV JAVA_HOME /usr
-RUN yes | sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;31.0.0" "platforms;android-30" \
+RUN yes | sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;30.0.3" "platforms;android-30" \
                                                   "ndk;25.0.8775105"
 
 FROM registry.fedoraproject.org/fedora-minimal:36
