@@ -9,9 +9,6 @@ RUN unzip *.zip && mkdir -p sdk/cmdline-tools/ && mv cmdline-tools/ sdk/cmdline-
 ENV JAVA_HOME /usr
 RUN yes | sdk/cmdline-tools/latest/bin/sdkmanager "build-tools;30.0.3" "platforms;android-30" \
                                                   "ndk;25.1.8937393"
-RUN curl --silent -O -L https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.bz2 && \
-    tar -xf *.tar.bz2 'boost_1_*_0/boost' && \
-    mv boost_1_*_0/boost/ sdk/ndk/*/toolchains/llvm/prebuilt/*/sysroot/usr/include/
 
 FROM registry.fedoraproject.org/fedora-minimal:36
 COPY --from=build /opt/sdk /opt/sdk
